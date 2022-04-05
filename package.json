@@ -1,0 +1,22 @@
+{
+  "name": "nodewithtests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha ./**/*.js",
+    "start": "nodemon --inspect=0.0.0.0:9229 server.js"
+  },
+  "keywords": [
+    "nodejs"
+  ],
+  "author": "Isaac Johnson",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^9.2.2"
+  },
+  "dependencies": {
+    "ronin-mocks": "^0.1.6",
+    "ronin-server": "^0.1.3"
+  }
+}
