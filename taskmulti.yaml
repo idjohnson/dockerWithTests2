@@ -1,7 +1,9 @@
 version: v1.1.0
 steps:
 # Build target image
-- build: -t {{.Run.Registry}}/dockerwithtests:{{.Run.ID}} -f Dockerfile .
+ - build: -t {{.Run.Registry}}/dockerwithtests:{{.Run.ID}} -t {{.Run.Registry}}/dockerwithtests:{{.Run.Commit}} -f Dockerfile .
 # Push image
+- push:
+  - {{.Run.Registry}}/dockerwithtests:{{.Run.Commit}}
 - push:
   - {{.Run.Registry}}/dockerwithtests:{{.Run.ID}}
