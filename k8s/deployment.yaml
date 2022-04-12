@@ -23,6 +23,7 @@ spec:
       containers:
       - name: my-nginx
         image: nginx
+        imagePullPolicy: Always
         ports:
         - containerPort: 8000
 ---
