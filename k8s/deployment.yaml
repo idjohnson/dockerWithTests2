@@ -24,7 +24,7 @@ spec:
       - name: my-nginx
         image: nginx
         ports:
-        - containerPort: 80
+        - containerPort: 8000
 ---
 apiVersion: v1
 kind: Service
