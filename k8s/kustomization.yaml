@@ -3,4 +3,4 @@ resources:
 images:
 - name: nginx
   newName: idjacrdemo02.azurecr.io/dockerwithtests
-  newTag: $(GIT_COMMIT)-1-$(GIT_SHA)-2-$(COMMIT)
+  newTag: ${GIT_COMMIT}-1-${{GIT_SHA}}-2-$COMMIT
