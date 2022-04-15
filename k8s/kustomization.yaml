@@ -3,4 +3,4 @@ resources:
 images:
 - name: nginx
   newName: idjacrdemo02.azurecr.io/dockerwithtests
-  newTag: cj3 
+  newTag: devlatest
