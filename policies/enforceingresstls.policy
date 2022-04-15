@@ -1,0 +1,51 @@
+apiVersion: securitytower.io/v1alpha2
+kind: Policy
+metadata:
+  name: EnforceIngressTLS
+spec:
+  version: "1.2.4"
+  description: |
+    Enforces that every ingress uses TLS encryption.
+    This prevents accidentally creating insecure, unencrypted entry points to your cluster.
+
+    ---
+
+    Note that this policy is part of the following security standards:
+
+    - `bsi/containerization`: BSI IT-Grundschutz "Containerisierung": Section: SYS.1.6.A21
+  kind:
+    - Security
+    - Network
+    - bsi/containerization
+  example: |
+    apiVersion: networking.k8s.io/v1
+    kind: Ingress
+    metadata:
+      name: missing-tls
+    spec:
+      rules:
+        - host: missing-tls.example.syncier.cloud
+          http:
+            paths:
+              - path: /
+                pathType: Prefix
+                backend:
+                  service:
+                    name: backend-server
+                    port:
+                      number: 8080
+    + tls:
+    +   - hosts:
+    +     - missing-tls.example.syncier.cloud
+    +     secretName: lets-encrypt-wildcard
+  riskAcceptance:
+    annotationName: securitytower.io/policy.exclusion.enforceingresstls
+    example: |
+      apiVersion: networking.k8s.io/v1
+      kind: Ingress
+      metadata:
+        name: your-ingress
+        annotations:
+          securitytower.io/policy.exclusion.enforceingresstls: |-
+            Describe why the ingress does not have an tls section.
+      ...
