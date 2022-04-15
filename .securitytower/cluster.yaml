@@ -1,0 +1,7 @@
+apiVersion: securitytower.io/v1alpha1
+kind: Cluster
+metadata:
+   name: dockerWithTests2
+spec:
+   policies:
+      path: /policies
