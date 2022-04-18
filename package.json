@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha ./**/*.js",
-    "start": "nodemon --inspect=0.0.0.0:9229 server.js"
+    "start": "nodemon --inspect=0.0.0.0:9229 server.js",
+    "testawesome": "mocha --reporter mochawesome ./**/*.js"
   },
   "keywords": [
     "nodejs"
@@ -16,6 +17,7 @@
     "mocha": "^9.2.2"
   },
   "dependencies": {
+    "mochawesome": "^7.1.3",
     "ronin-mocks": "^0.1.6",
     "ronin-server": "^0.1.3"
   }
