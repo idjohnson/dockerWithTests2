@@ -1,0 +1,19 @@
+apiVersion: securitytower.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx-test
+spec:
+  stages:
+    - name: nginx-app-production
+      resources:
+        repository: https://github.com/idjohnson/dockerWithTests2
+        revision: main
+        path: k8s
+      targetNamespace: example-app-1
+      previousStage: example-app-staging
+    - name: nginx-app-staging
+      resources:
+        repository: https://github.com/idjohnson/dockerWithTests2
+        revision: main
+        path: k8s
+      targetNamespace: example-app-2
