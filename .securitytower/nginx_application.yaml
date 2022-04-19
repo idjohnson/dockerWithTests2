@@ -10,7 +10,7 @@ spec:
         revision: main
         path: k8s
       targetNamespace: example-app-1
-      previousStage: example-app-staging
+      previousStage: example-app-2 
     - name: nginx-app-staging
       resources:
         repository: https://github.com/idjohnson/dockerWithTests2
