@@ -2,5 +2,5 @@ resources:
 - deployment.yaml
 images:
 - name: nginx
-  newName: idjacrdemo02.azurecr.io/dockerwithtests
+  newName: idjacrdemo02.azurecr.io/asdfasdfdockerwithtests
   newTag: devlatest
