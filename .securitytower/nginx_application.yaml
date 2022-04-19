@@ -1,7 +1,7 @@
 apiVersion: securitytower.io/v1alpha1
 kind: Application
 metadata:
-  name: nginx-test
+  name: nginx-test2
 spec:
   stages:
     - name: nginx-app-production
