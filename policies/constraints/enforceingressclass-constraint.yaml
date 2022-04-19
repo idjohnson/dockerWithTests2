@@ -6,6 +6,7 @@ metadata:
     argocd.argoproj.io/sync-wave: "-100"
   name: enforceingressclass
 spec:
+  enforcementAction: dryrun
   match:
     kinds:
     - apiGroups:
