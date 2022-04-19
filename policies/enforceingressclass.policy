@@ -1,0 +1,63 @@
+apiVersion: securitytower.io/v1alpha2
+kind: Policy
+metadata:
+  name: EnforceIngressClass
+spec:
+  version: "1.2.3"
+  description: |
+    Restricts the Ingress classes which can be set on an Ingress object.
+
+    By default, the policy requires the `internal` Ingress class to be explicitly set, and therefore prevents exposing public Ingresses inadvertently.
+    A public Ingress can still be created by adding a risk acceptance.
+
+    The behaviour of the policy can be controlled via the parameters on the `enforceingressclass-constraint.yaml`:
+
+    ```
+    apiVersion: constraints.gatekeeper.sh/v1beta1
+    kind: enforceingressclass
+    [...]
+    spec:
+      parameters:
+        allowedIngressClasses:
+          - internal
+        allowDefaultIngressClass: false
+    ```
+
+    ---
+
+    Note that this policy is part of the following security standards:
+
+    - `bsi/containerization`: BSI IT-Grundschutz "Containerisierung": Section: SYS.1.6.A21
+  kind:
+    - Security
+    - Network
+    - bsi/containerization
+  example: |
+    apiVersion: networking.k8s.io/v1
+    kind: Ingress
+    metadata:
+      name: minimal-ingress
+    spec:
+    - ingressClassName: external-lb
+    + ingressClassName: internal
+      rules:
+      - http:
+          paths:
+          - path: /testpath
+            pathType: Prefix
+            backend:
+              service:
+                name: test
+                port:
+                  number: 80
+  riskAcceptance:
+    annotationName: securitytower.io/policy.exclusion.enforceingressclass
+    example: |
+      apiVersion: networking.k8s.io/v1
+      kind: Ingress
+      metadata:
+        name: your-ingress
+        annotations:
+          securitytower.io/policy.exclusion.enforceingressclass: |-
+            Describe why the ingress uses a different class.
+      ...

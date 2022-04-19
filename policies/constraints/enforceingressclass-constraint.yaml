@@ -1,0 +1,19 @@
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: EnforceIngressClass
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-wave: "-100"
+  name: enforceingressclass
+spec:
+  match:
+    kinds:
+    - apiGroups:
+      - extensions
+      - networking.k8s.io
+      kinds:
+      - Ingress
+  parameters:
+    allowDefaultIngressClass: false
+    allowedIngressClasses:
+    - internal
