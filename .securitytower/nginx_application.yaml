@@ -6,14 +6,14 @@ spec:
   stages:
     - name: nginx-app-production
       resources:
-        repository: https://github.com/idjohnson/dockerWithTests2
+        repository: https://github.com/idjohnson/dockerWithTests2.git
         revision: main
         path: k8s
       targetNamespace: example-app-1
       previousStage: example-app-2 
     - name: nginx-app-staging
       resources:
-        repository: https://github.com/idjohnson/dockerWithTests2
+        repository: https://github.com/idjohnson/dockerWithTests2.git
         revision: main
         path: k8s
       targetNamespace: example-app-2
