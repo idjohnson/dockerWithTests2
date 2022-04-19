@@ -1,0 +1,56 @@
+apiVersion: securitytower.io/v1alpha2
+kind: Policy
+metadata:
+  name: EnforceLivenessProbe
+spec:
+  version: "1.2.3"
+  description: |
+    Enforces that every container must have a liveness probe defined.
+    This allows Kubernetes to identify failing containers and take action.
+
+    ---
+
+    Note that this policy is part of the following security standards:
+
+    - `bsi/kubernetes`: BSI IT-Grundschutz "Kubernetes": Section: APP.4.4.A11
+  kind:
+    - Operational
+    - Probes
+    - bsi/kubernetes
+  example: |
+    apiVersion: apps/v1
+    kind: StatefulSet
+    metadata:
+      labels:
+        app: grafana
+      name: grafana
+    spec:
+      template:
+        spec:
+          containers:
+            - image: grafana/grafana:5.4.2
+              name: grafana
+              ports:
+                - containerPort: 3000
+                  name: http
+                  protocol: TCP
+    +         livenessProbe:
+    +           failureThreshold: 3
+    +           httpGet:
+    +             path: /api/health
+    +             port: http
+    +             scheme: HTTP
+    +           periodSeconds: 10
+    +           successThreshold: 1
+    +           timeoutSeconds: 1
+  riskAcceptance:
+    annotationName: securitytower.io/policy.exclusion.enforcelivenessprobe
+    example: |
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: your-deployment
+        annotations:
+          securitytower.io/policy.exclusion.enforcelivenessprobe: |-
+            The used image is provided by vendor and do not support support appropriate livenessprobes.
+      ...
