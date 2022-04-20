@@ -8,7 +8,7 @@ COPY package-lock.json package-lock.json
 FROM base as test
 RUN npm ci
 COPY . .
-RUN npm run test
+RUN npm run testnyc
 
 FROM base as prod
 ENV NODE_ENV=production
