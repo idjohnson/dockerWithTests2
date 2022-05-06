@@ -1,16 +1,7 @@
----
-kind: Namespace
-apiVersion: v1
-metadata:
-  name: test
-  labels:
-    name: test
----   
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: my-nginx
-  namespace: test
 spec:
   selector:
     matchLabels:
