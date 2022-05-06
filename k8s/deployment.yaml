@@ -1,3 +1,10 @@
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: test
+  labels:
+    name: test
 ---   
 apiVersion: apps/v1
 kind: Deployment

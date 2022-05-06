@@ -1,4 +1,11 @@
 ---
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: test
+  labels:
+    name: test
+---
 apiVersion: v1
 kind: Service
 metadata:
