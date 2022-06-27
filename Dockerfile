@@ -18,9 +18,14 @@ ENV PATH $PATH:sonar-scanner/bin
 RUN npm ci
 COPY . .
 COPY .git .git
-RUN npm run testnyc
+RUN npm run test2
 
 RUN sonar-scanner -Dsonar.settings=sonar-scanner/conf/sonar-scanner.properties
+
+RUN apt update && apt install -y jq
+RUN curl --silent -u sqp_72d6f8cbe95fd000004d2d7465625f587cd39558: https://sonarqube.freshbrewed.science/api/project_analyses/search?project=dkrwtsts | jq -r '.analyses[].events[] | select(.category=="QUALITY_GATE") | .name' > results
+RUN grep -q "Passed" output; exit $? 
+
 
 FROM base as prod
 ENV NODE_ENV=production

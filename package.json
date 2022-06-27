@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "test2": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text mocha tests/calc.js",
     "test": "mocha ./**/*.js",
     "start": "nodemon --inspect=0.0.0.0:9229 server.js",
     "testawesome": "mocha --reporter mochawesome ./**/*.js",
@@ -15,6 +16,14 @@
   "author": "Isaac Johnson",
   "license": "MIT",
   "devDependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/register": "^7.17.7",
+    "babel-plugin-istanbul": "^6.1.1",
+    "chai": "^4.3.6",
+    "cross-env": "^7.0.3",
+    "expect.js": "^0.3.1",
+    "jest": "^28.0.2",
     "mocha": "^9.2.2",
     "nyc": "^15.1.0"
   },
@@ -22,5 +31,19 @@
     "mochawesome": "^7.1.3",
     "ronin-mocks": "^0.1.6",
     "ronin-server": "^0.1.3"
-  }
+  },
+  "nyc": {
+    "require": [
+      "@babel/register"
+    ],
+    "reporter": [
+      "lcov",
+      "text"
+    ],
+    "sourceMap": false,
+    "instrument": true
+  },
+  "files": [
+    "calculator.js"
+  ]
 }
