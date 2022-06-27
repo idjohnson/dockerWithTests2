@@ -10,7 +10,7 @@ kind: ConfigMap
 metadata:
   name: docker-test-cm
 data:
-  Dockerfile: |
+  dockerfile: |
       FROM ubuntu:latest
       CMD [ "sleep", "64000" ]  
 ---
