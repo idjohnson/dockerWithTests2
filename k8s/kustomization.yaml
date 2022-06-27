@@ -2,5 +2,5 @@ resources:
 - deployment.yaml
 images:
 - name: nginx
-  newName: idjacrdemo02.azurecr.io/dockerwithtests
-  newTag: devlatest
+  newName: harbor.freshbrewed.science/freshbrewedprivate/dockerwithtests
+  newTag: latest

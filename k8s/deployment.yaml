@@ -4,6 +4,43 @@ metadata:
   name: test
   labels:
     name: test
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: docker-test-cm
+data:
+  Dockerfile: |
+      FROM ubuntu:latest
+      CMD [ "sleep", "64000" ]  
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kaniko
+spec:
+  containers:
+  - name: kaniko
+    image: gcr.io/kaniko-project/executor:latest
+    args: ["--dockerfile=/workspace/dockerfile",
+            "--context=dir://workspace",
+            "--destination=harbor.freshbrewed.science/freshbrewedprivate/dockerwithtests"]
+    volumeMounts:
+      - name: kaniko-secret
+        mountPath: /kaniko/.docker
+      - name: dockerfile-storage
+        mountPath: /workspace
+  restartPolicy: Never
+  volumes:
+    - name: kaniko-secret
+      secret:
+        secretName: kanikoharborcred
+        items:
+          - key: .dockerconfigjson
+            path: config.json
+    - name: dockerfile-storage
+      configMap:
+         name: docker-test-cm
 ---   
 apiVersion: apps/v1
 kind: Deployment
