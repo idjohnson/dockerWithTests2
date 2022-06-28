@@ -120,7 +120,7 @@ spec:
       imagePullSecrets:
       - name: regcred
       containers:
-      - name: harbor.freshbrewed.science/freshbrewedprivate/dockerwithtests:latest
+      - name: nginx
         image: nginx
         imagePullPolicy: Always
         ports:
