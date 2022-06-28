@@ -101,7 +101,7 @@ spec:
             path: config.json
     - name: dockerfile-storage
       configMap:
-         name: primary-file-vol
+         name: primary-file-vol2
 ---   
 apiVersion: apps/v1
 kind: Deployment
