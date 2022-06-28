@@ -1,8 +1,0 @@
-configMapGenerator:
-  - name: primary-file-vol2
-    files:
-      - Dockerfile
-      - package.json
-      - server.js
-generatorOptions:
-  disableNameSuffixHash: true
