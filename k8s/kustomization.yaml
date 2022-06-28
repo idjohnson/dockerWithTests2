@@ -2,7 +2,6 @@ commonLabels:
   app: hello
 resources:
 - deployment.yaml
-- service.yaml
 images:
   - name: nginx
     newName: harbor.freshbrewed.science/freshbrewedprivate/dockerwithtests
