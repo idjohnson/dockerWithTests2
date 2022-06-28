@@ -83,14 +83,14 @@ spec:
   containers:
   - name: kaniko
     image: gcr.io/kaniko-project/executor:latest
-    args: ["--dockerfile=Dockerfile",
+    args: ["--dockerfile=/workspace/Dockerfile",
             "--context=dir://workspace",
             "--destination=harbor.freshbrewed.science/freshbrewedprivate/dockerwithtests"]
     volumeMounts:
       - name: kaniko-secret
         mountPath: /kaniko/.docker
       - name: dockerfile-storage
-        mountPath: /workspace
+        mountPath: /workspace/workspace
   restartPolicy: Never
   volumes:
     - name: kaniko-secret
