@@ -1,10 +1,3 @@
-resources:
-- deployment.yaml
-images:
-- name: nginx
-  newName: harbor.freshbrewed.science/freshbrewedprivate/dockerwithtests
-  newTag: latest
----
 configMapGenerator:
   - name: primary-file-vol
     files:

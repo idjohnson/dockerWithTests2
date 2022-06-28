@@ -52,7 +52,7 @@ spec:
       - name: regcred
       containers:
       - name: my-nginx
-        image: nginx
+        image: harbor.freshbrewed.science/freshbrewedprivate/dockerwithtests:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8000
