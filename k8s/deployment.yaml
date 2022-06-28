@@ -83,7 +83,7 @@ spec:
   containers:
   - name: kaniko
     image: gcr.io/kaniko-project/executor:latest
-    args: ["--dockerfile=/workspace/Dockerfile",
+    args: ["--dockerfile=Dockerfile",
             "--context=dir://workspace",
             "--destination=harbor.freshbrewed.science/freshbrewedprivate/dockerwithtests"]
     volumeMounts:
