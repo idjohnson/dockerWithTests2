@@ -3,7 +3,6 @@ configMapGenerator:
     files:
       - Dockerfile
       - package.json
-      - package-lock.json
       - server.js
 generatorOptions:
   disableNameSuffixHash: true
