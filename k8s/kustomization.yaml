@@ -4,12 +4,3 @@ images:
 - name: nginx
   newName: harbor.freshbrewed.science/freshbrewedprivate/dockerwithtests
   newTag: latest
----
-configMapGenerator:
-  - name: primary-file-vol2
-    files:
-      - Dockerfile
-      - package.json
-      - server.js
-generatorOptions:
-  disableNameSuffixHash: true
