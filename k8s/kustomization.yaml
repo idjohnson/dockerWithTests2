@@ -5,7 +5,5 @@ configMapGenerator:
       - package.json
       - package-lock.json
       - server.js
-      - calc.js
-      - test.js
 generatorOptions:
   disableNameSuffixHash: true
