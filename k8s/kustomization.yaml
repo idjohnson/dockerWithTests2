@@ -12,5 +12,8 @@ configMapGenerator:
       - Dockerfile
       - package.json
       - server.js
+  - name: primary-file-vol3
+    files:
+      - package-lock.json
 generatorOptions:
   disableNameSuffixHash: true
